@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/review.css">
+    <title>Movie Review Compare</title>
+</head>
+<body>
+
+    <main>
+        <section id="page-title">
+            <!-- Site Title -->
+            <h1>Movie Comparison</h1>
+        </section>
+
+        <!-- Main Content Wrapper -->
+        <div class="content-wrapper">
+
+            <section id="movie-title">
+                <!-- Movie Title -->
+                <h2 id="movie-title"></h2>
+                <!-- Movie Description & Date -->
+                <p id="desc-date"></p>
+            </section>
+
+            <!-- IMDB Section -->
+            <section id="imdb-section">
+                <div class="container">
+
+                    <h3>IMDB</h3>
+                    <!-- Inner Container -->
+                    <section class="review-container">
+                        <img src="./assets/media/images/imdb_placeholder.jpg" alt="movie-title">
+                        <h4>Rating: <span id="imdb_rating">75%</span></h4>
+                        <h4>Number of Reviews: <span id="imdb_audience_review">14,000</span></h4>
+                        <article id="imdb_good-reviews">
+
+                            <!-- Good Reviews -->
+                            <div id="imdb_good-review_one">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</p>
+                                <q>Lorem ipsum</q>
+                            </div>
+                            <div id="imdb_good-review_two">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</p>
+                                <q>Lorem ipsum</q>
+                            </div>
+                        </article>
+
+                        <article id="imdb_bad-reviews">
+
+                            <!-- Bad Reviews -->
+                            <div id="imdb_good-review_one">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</p>
+                                <q>Lorem ipsum</q>
+                            </div>
+                            <div id="imdb_good-review_two">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</p>
+                                <q>Lorem ipsum</q>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </section>
+
+            <!-- Rotten Tommatoes Section -->
+            <section id="rottentommatoes-section">
+                <div class="container">
+
+                    <h3>Rotten Tommatoes</h3>
+                    <!-- Inner Container -->
+                    <section class="review-container">
+                        <img src="./assets/media/images/tommatoes_placeholder.jpg" alt="movie-title">
+                        <h4>Rating: <span id="rt_rating">65%</span></h4>
+                        <h4>Number of Reviews: <span id="rt_audience_review">15,000</span></h4>
+                        <article id="rt_good-reviews">
+
+                            <!-- Good Reviews -->
+                            <div id="rt_good-review_one">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</p>
+                                <q>Lorem ipsum</q>
+                            </div>
+                            <div id="rt_good-review_two">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</p>
+                                <q>Lorem ipsum</q>
+                            </div>
+                        </article>
+
+                        <article id="rt_bad-reviews">
+
+                            <!-- Bad Reviews -->
+                            <div id="rt_good-review_one">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</p>
+                                <q>Lorem ipsum</q>
+                            </div>
+                            <div id="rt_good-review_two">
+                                <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</p>
+                                <q>Lorem ipsum</q>
+                            </div>
+                        </article>
+                    </section>
+                </div>
+            </section>
+        </div>
+    </main>
+    
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- Javascript -->
+    <script src="./assets/js/review.js"></script>
+</body>
+</html>

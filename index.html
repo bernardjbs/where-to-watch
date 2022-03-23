@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="./assets/css/reset.css">
+    <link rel="stylesheet" href="./assets/css/style.css">
+
+    <!-- JQuery UI (CSS) -->
+    <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+    <title>Movie Review Compare</title>
+</head>
+<body>
+
+    <main>
+        <section id="page-title">
+            <!-- Site Title -->
+            <h1>Movie Comparison</h1>
+        </section>
+
+        <!-- Main Content Wrapper -->
+        <div class="content-wrapper">
+
+            <!-- Search Section -->
+            <section id="search">
+                <div class="container">
+
+                    <!-- Search Form -->
+                    <form action="">
+                        <article class="container">
+                            <!-- Date Range Check -->
+                            <label for="date-range" title="Refine a date range">Refine Release Date (optional)</label>
+                            <input tabindex="1" type="text" name="date-range" id="date-range" readonly>
+                            <div id="slider-range"></div>
+                        </article>
+                        <article class="container">
+                            <!-- Title Search -->
+                            <label for="title-search" title="Search a movie title">Search for a Movie title</label>
+                            <input tabindex="2" type="text" id="title-search" name="title-search" placeholder="batman ...">
+                            <button type="submit">Find Movie</button>
+                        </article>
+                    </form>
+                </div>
+            </section>
+
+            <!-- Matching Title Section -->
+            <section id="matching-movies">
+                <article class="container">
+
+                    <!-- title for matching search terms -->
+                    <article id="match-results">
+                        <section class="container">
+
+                            <!-- matching title results -->
+                            <div tabindex="3" class="match_titles_results">
+                                <h2 id="title-one"><span>The Dark Knight Rises</span><span>2019</span><span><img src="./assets/media/images/imdb_placeholder.jpg" alt="movie-title"></span></h2>
+                                <h2 id="title-two"><span>Batman Begins</span><span>2013</span><span><img src="./assets/media/images/imdb_placeholder.jpg" alt="movie-title"></span></h2>
+                                <h2 id="title-three"><span>Batman Forever</span><span>2002</span><span><img src="./assets/media/images/imdb_placeholder.jpg" alt="movie-title"></span></h2>
+                            </div>
+                        </section>
+                    </article>
+                </article>
+            </section>
+        </div>
+    </main>
+    
+    <!-- JQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <!-- JQuery UI (Javascript) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js" integrity="sha512-uto9mlQzrs59VwILcLiRYeLKPPbS/bT71da/OEBYEwcdNUk8jYIy+D176RYoop1Da+f9mvkYrmj5MCLZWEtQuA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <!-- Javascript -->
+    <script src="./assets/js/script.js"></script>
+</body>
+</html>
