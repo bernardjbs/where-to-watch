@@ -1,1 +1,196 @@
 /* Used for index.html */
+.main
+{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    padding: 10px;
+ 
+  margin-left: 20px;
+}
+.content-wrapper
+{
+    display: flex;
+    flex-direction: row;
+   
+}
+#search
+{
+    width: 40%;
+    margin-right: 10px;
+  
+    padding: 10px;
+}
+#matching-movies
+{
+    width: 100%;
+  
+    padding: 10px;
+}
+#match-results
+{
+text-align: left;
+}
+.select-group
+{
+    border: 3px solid black;
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+#loading
+{
+    width: 2rem;
+    height: 2rem;
+    border: 5px solid hsl(6.39, 73.16%, 54.71%);;
+border-top: 6px solid rgb(245, 140, 128);
+border-radius: 100%;
+margin:auto;
+visibility: hidden;
+animation: spin 1s infinite linear;
+}
+#loading.display
+{
+    visibility: visible;
+}
+
+.row
+{
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    background-color: rgb(245, 140, 128);
+    border: 2px solid white;
+    border-radius: 3px;
+    cursor: pointer;
+}
+.row:hover
+{
+    background-color: hsl(6.39, 73.16%, 54.71%);
+}
+.row:active {
+    background-color: hsl(6.39, 73.16%, 54.71%);
+  }
+.container
+{
+    /* border: 3px solid #FAD1D1; */
+    border: 3px solid hsl(6.39, 73.16%, 54.71%);
+    border-radius: 5px;
+    background-color: #FAD1D1(235, 88, 88, 0);
+    text-align: center;
+}
+.form-header
+{
+    background-color: hsl(6.39, 73.16%, 54.71%);
+    color: white;
+    height: 40px;
+    font-weight: bold;
+    text-align: center;
+  padding: 10px;
+}
+
+/* .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default, .ui-button, html .ui-button.ui-state-disabled:hover, html .ui-button.ui-state-disabled:active {
+ 
+    color: hsl(6.39, 73.16%, 54.71%);
+    background: hsl(6.39, 73.16%, 54.71%);
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active, a.ui-button:active, .ui-button:active .ui-button.ui-state-active:hover{
+ 
+    color: hsl(6.39, 73.16%, 54.71%);
+    background: hsl(6.39, 73.16%, 54.71%);
+} */
+.form-input
+{
+    border: 3px solid black;
+    border-radius: 5px;
+    height: 40px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    padding: 5px;
+}
+.form-control
+{
+    padding: 10px;
+    font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    margin-top: 5px;
+    margin-bottom: 5px;
+}
+.checkbox_group
+{
+   font-weight: bold;
+   margin-top: 10px;
+    display: flex;
+    flex-direction: row;
+   justify-content:space-between
+}
+.form-control label{
+    font-weight: bold;
+    text-align: left;
+}
+.panel.a {
+    vertical-align: baseline;
+  }
+.lnkclass
+{
+    width: 100px;
+    height: 40px;
+    padding: 10px;
+    background-color: white;
+    color: red;
+    float: right;
+    align-items: baseline;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+.row_image
+{
+    width: 100px;
+    height: auto;
+}
+.row_div
+{
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.btn
+{
+    height: 40px;
+    background-color: hsl(6.39, 73.16%, 54.71%);
+    padding: 10px;
+    color: white;
+    font-weight: bold;
+    border: 2px solid white;
+    border-radius: 8px;
+    cursor: pointer;
+}
+.row icon 
+{
+float: right;
+}
+
+.panel {
+    padding: 10px;
+    display: none;
+ 
+
+   
+  }
+@media screen and (max-width: 800px) {
+    header{
+height: 100px;
+   }
+  }
+  @keyframes spin {
+    from
+    {
+transform: rotate(0deg);
+    }
+    to
+    {
+        transform: rotate(360deg);
+    }
+}
