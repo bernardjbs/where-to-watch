@@ -11,6 +11,8 @@
 
     <!-- JQuery UI (CSS) -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+
+    <!-- Font Awesome -->
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
     integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <title>Movie Review Compare</title>
@@ -35,30 +37,31 @@
                     <form id="form-input">
                         <div class="form-header">Search</div>
                         <div class="form-control">
+
                             <!-- Date Range Check -->
                             <label for="date-range"  title="Refine a date range">Refine Release Date</label>
                             <input tabindex="1" type="text" class="form-input" name="date-range" id="date-range" readonly>
                             <div class="form-input" id="slider-range"></div>
+
                         </div>
                         <div class="form-control">
+
                             <!-- Title Search -->
                             <label for="title-search"  title="Search a movie title">Movie Title</label>
                             <input tabindex="2" class="form-input" type="text" id="title-search" name="title-search" placeholder="Enter Movie">
                          
                         </div>
                         <div class="form-control">
-                            <!-- Title Search -->
+
+                            <!-- User Rating -->
                             <label for="title-search"  title="Search a movie title">User Rating</label>
-                            <select id="ratingfrom" class="select-group">
-                               
-                              </select>
-                              to <select class="select-group" id="ratingto">
-                               
-                              </select>
+                            <select id="ratingfrom" class="select-group"> </select> to <select class="select-group" id="ratingto"> </select>
+
                         </div>
                         <div class="form-control">
-                            <!-- Title Search -->
-                            <label for="title-search"  title="Search a movie title">US Certificates</label>
+
+                            <!-- Certification -->
+                            <label for="title-search"  title="Search a movie title">Certification</label>
                             <div class="checkbox_group"> <input type="checkbox" id="chkPG"  value="PG">PG
                             <input type="checkbox" id="chkG"  value="US:G">G
                             <input type="checkbox" id="chkPG_13" value="US:PG-13">PG-13
@@ -78,30 +81,15 @@
 
                     <!-- title for matching search terms -->
                     <article id="match-results">
-                      
 
                             <!-- matching title results -->
-                            <div tabindex="3" class="table_result">
-                             <!-- <div class="row" data-mode="down">Spider Man<icon class="fa fa-angle-down"></icon><div class="panel">
+                            <div tabindex="3" class="table_result"></div>
 
-                                <img class="row_image" src="https://imdb-api.com/images/original/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_Ratio0.6837_AL_.jpg" >
-                              genres : Comedy
-                                 contentRating : 5
-
-                               <a href="#" class="lnkclass" >More</a>
-                             </div>
-                            </div>
-                             <div class="row">Bat Man<icon class="fa fa-angle-down"></icon></div>
-                             <div class="row">Spider Man<icon class="fa fa-angle-down"></icon></div>
-                             <div class="row">Bat Man</div>
-                             <div class="row">Spider Man</div>
-                             <div class="row">Bat Man</div>
-                             <div class="row">Spider Man</div>
-                             <div class="row">Bat Man</div> -->
-                            </div>
-                    
                     </article>
+
+                    <!-- Loading Icon -->
                     <div id="loading"></div>
+
                 </article>
             </section>
         </div>
