@@ -87,7 +87,7 @@ h2 {
     animation: spin 1s infinite linear;
 }
 
-#loading .display {
+.display {
     visibility: visible;
 }
 
@@ -115,7 +115,10 @@ h2 {
     background-color: var(--light-pink);
     text-align: center;
 }
-
+#review-container
+{
+    display: flex;
+}
 .form-header {
     background-color: var(--dark-orange);
     color: var(--white);
