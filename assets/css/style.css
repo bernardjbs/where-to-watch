@@ -83,14 +83,19 @@ h2 {
     border-top: 6px solid var(--light-orange);
     border-radius: 100%;
     margin:auto;
-    visibility: hidden;
+   
     animation: spin 1s infinite linear;
 }
+.ui-slider-handle { border-color: red !important;
+    background-color: red !important; }
 
-#loading .display {
+.display {
     visibility: visible;
 }
-
+.hideloading
+{
+     visibility: hidden;
+}
 .row {
     padding: 10px;
     color: var(--white);
@@ -115,7 +120,10 @@ h2 {
     background-color: var(--light-pink);
     text-align: center;
 }
-
+#review-container
+{
+    display: flex;
+}
 .form-header {
     background-color: var(--dark-orange);
     color: var(--white);

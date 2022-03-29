@@ -14,14 +14,18 @@ var loader = $("#loading");
 
 // Display load icon
 function displayLoading() {
+  
+  loader.removeClass("hideloading");
   loader.addClass("display");
   setTimeout(() => {
     loader.removeClass("display");
+    loader.addClass("hideloading");
   }, 10000);
 }
 // Hide load icon
 function HideLoading() {
   loader.removeClass("display");
+  loader.addClass("hideloading");
 }
 
 // Handle Form Submission
@@ -184,6 +188,7 @@ $(function () {
       // Date Range Input
       $("#date-range").val(ui.values[0] + "," + ui.values[1]);
     },
+   
   });
 
   // Date Range Static
