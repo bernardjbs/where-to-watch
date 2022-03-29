@@ -83,14 +83,17 @@ h2 {
     border-top: 6px solid var(--light-orange);
     border-radius: 100%;
     margin:auto;
-    visibility: hidden;
+   
     animation: spin 1s infinite linear;
 }
 
 .display {
     visibility: visible;
 }
-
+.hideloading
+{
+     visibility: hidden;
+}
 .row {
     padding: 10px;
     color: var(--white);
