@@ -188,6 +188,7 @@ $(function () {
       // Date Range Input
       $("#date-range").val(ui.values[0] + "," + ui.values[1]);
     },
+   
   });
 
   // Date Range Static
