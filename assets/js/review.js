@@ -1,12 +1,8 @@
 const IMDB_apiKey = ["k_y4wdrion", "k_ie3pfgw9", "k_o18qbud0", "k_tfp7sn7o", "k_51hudf0k", "k_zz238cmu"];
 const TMBD_apiKey = "30584b857c462403f3b7916157ab32b7";
 let IMBD_personIDs = [];
-let API_index = 1;
-
-
-let actorsEl = document.querySelector("#actors");
-let actorsH3 = $("#main-cast");
-let reviewContainerEl = $("#review-container");
+let API_index = 4;
+const numberOfCast = 3; // number of main cast to be filled in mainCast array from the Movie object
 
 // Constant object to get nested object from API
 const getNestedObject = (nestedObj, pathArr) => {
@@ -20,133 +16,74 @@ function getParams() {
     return movieID;
 }
 
-function getMovieObject(movieId) {
-    // Title API url from IMDB 
-    const IMDB_requestUrl_Title = `https://imdb-api.com/en/API/Title/${IMDB_apiKey[API_index]}/${movieId}/FullCast.Posters`
+async function getMovieObject(movieId) {
+    // TITLE API url from IMDB 
+    const IMDB_requestUrl_Title = `https://imdb-api.com/en/API/Title/${IMDB_apiKey[API_index]}/${movieId}`
+
+    // Get json data from IMDB/TITLE API
+    const response_IMDB_TITLE = await fetch(IMDB_requestUrl_Title);
+    const json_IMDB_TITLE = await response_IMDB_TITLE.json();
+
+    // for (let key in json_IMDB_TITLE) {
+    //     console.log(key + ": ", json_IMDB_TITLE[key]);
+    // }
+
+    const imdbMovieID = json_IMDB_TITLE.id;
+    const IMDB_requestUrl_Ratings = `https://imdb-api.com/en/API/Ratings/${IMDB_apiKey[API_index]}/${imdbMovieID}`
+
+    // Get json data from IMDB/RATINGS API
+    const response_IMDB_RATINGS = await fetch(IMDB_requestUrl_Ratings)
+    const json_IMDB_RATINGS = await response_IMDB_RATINGS.json();
 
 
-    // Fetch request to Title API from IMBD
-    fetch(IMDB_requestUrl_Title)
-        .then(response => {
-            return response.json();
-        })
-        .then(IMDB_title_data => {
-            return getMovie_IMDB_TITLE(IMDB_title_data);
-        })
-        .then(Movie => {
-            // console.log("Movie in getApi 01: " + JSON.stringify(movie));
-            return getApi_TMDB(Movie);
-        })
-}
+    const movieImdbRating = json_IMDB_RATINGS.imDb;
+    const movieTitle = json_IMDB_TITLE.title;
+    const movieDescription = json_IMDB_TITLE.title;
+    const movieReleaseDate = json_IMDB_TITLE.releaseDate;
+    const movieGenres = json_IMDB_TITLE.genres;
+    const movieCertificate = json_IMDB_TITLE.contentRating;
+    const movieImage = json_IMDB_TITLE.image;
+    let mainCast = await getMainCast(json_IMDB_TITLE.actorList);
 
-function getApi_TMDB(Movie) {
-
-    for(i=0; i<Movie.mainCast.length; i++) {
-        console.log("Main cast len: " + Movie.mainCast[i]);
-    }
-
-    // URL for TMDB FIND API
-    const TMDB_requestUrl_Person = `https://api.themoviedb.org/3/find/nm1500155?api_key=${TMBD_apiKey}&language=en-US&external_source=imdb_id`
-
-    // Fetch request to Find API from TMDB
-    fetch(TMDB_requestUrl_Person)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(data => {
-
-            for (let key in data) {
-                console.log(key + ": ", data[key]);
-            }
-
-            //Get the tmdb person id and set it to the movie object
-            let id = data.person_results[0].id;
-            Movie.tmdbId = id;
-            return Movie;
-        })
-        .then(Movie => {
-            console.log("The latest Movie Obj: " + JSON.stringify(Movie));
-        })
-}
-
-function getMovie_IMDB_TITLE(IMDB_title_data) {
-    Movie = {
-        imdbMovieID: IMDB_title_data.id,
-        movieDescription: IMDB_title_data.plot,
-        movieReleaseDate: IMDB_title_data.releaseDate,
-        movieGenres: IMDB_title_data.genres,
-        movieCertificate: IMDB_title_data.contentRating,
-        ...getCastNames(IMDB_title_data),
-        ...getPosterLink(IMDB_title_data),
-    }
-    return Movie;
-}
-
-function getPosterLink(IMDB_title_data) {
-    const nest_dataPoster = getNestedObject(IMDB_title_data, ["posters", "posters"]);
-    const posterImgLink = getNestedObject(nest_dataPoster, [0, "link"]);
     return {
-        movieImage: posterImgLink
+        imdbMovieID: imdbMovieID,
+        movieImdbRating: movieImdbRating,
+        movieTitle: movieTitle,
+        movieDescription: movieDescription,
+        movieReleaseDate: movieReleaseDate,
+        movieGenres: movieGenres,
+        movieCertificate: movieCertificate,
+        movieImage: movieImage,
+        mainCast: mainCast
     }
 }
-function getCastNames(IMDB_title_data) {
-    const fullCast = getNestedObject(IMDB_title_data, ["fullCast", "actors"]);
+
+async function getMainCast(actorList) {
     let mainCastArr = [];
     let mainCastObj = {};
-    const numberOfCast = 3;
-
     for (i = 0; i < numberOfCast; i++) {
+        const imdbCastID = actorList[i].id;
+        TMDB_requestUrl_Find = `https://api.themoviedb.org/3/find/${imdbCastID}?api_key=${TMBD_apiKey}&language=en-US&external_source=imdb_id`
+        // Get json data from TMDB/FIND API
+        const response_TMDB_FIND = await fetch(TMDB_requestUrl_Find);
+        const json_TMDB_FIND = await response_TMDB_FIND.json();
+
+        // console.log("TMDB request json: " + JSON.stringify(json_TMDB_FIND));
+        for (let key in json_TMDB_FIND) {
+            console.log(key + ": ", json_TMDB_FIND[key]);
+        }
         mainCastObj = {
-            imdbCastID: getNestedObject(fullCast, [i, "id"]), 
-            castName: getNestedObject(fullCast, [i, "name"])
+            imdbCastID: imdbCastID,
+            tmbdCastID: json_TMDB_FIND.person_results[0].id,
+            castName: actorList[i].name
         }
         mainCastArr.push(mainCastObj);
     }
-
-    // for (let key in IMDB_title_data) {
-    //     console.log(key + ": ", IMDB_title_data[key]);
-    // }
-
-    return {
-        movieTitle: IMDB_title_data.title,
-        mainCast: mainCastArr
-    }
+    return mainCastArr;
 }
 
-getMovieObject(getParams());
-
-//MOVIE OBJECT
-// let Movie = {
-//     imdbMovieID: string,
-//     tmdbMovieID: number,
-//     movieTitle: string,
-//     movieDescription: string,
-//     movieReleaseDate: Date,
-//     movieGenres: string,
-//     movieCertificate: string, // "PG", "G", "PG-13"
-//     movieImage: string,
-//     mainCast: [{imdbCastID: number,
-//                 tmbdCastID: number,
-//                 castName: string,
-//                 latestMovies: [{imdbMovieID: number,
-//                                 tmbdMovieID: number,
-//                                 movieTitle: string
-//                             }]
-//     }],
-//     movieImdbRating: string, ///{lang?}/API/Ratings/{apiKey}/{id} --> imDb
-//     movieAudienceReview: number, //{lang?}/API/UserRatings/{apiKey}/{id} --> .totalRatingVotes
-//     movieGoodReviews: [{
-//         reviewerName: string, //{lang?}/API/Reviews/{apiKey}/{id} --> username
-//         reviewerScore: number, //{lang?}/API/Reviews/{apiKey}/{id} --> rate
-//         reviewerComment: string //{lang?}/API/Reviews/{apiKey}/{id} --> title
-//     }],
-//     movieBadReviews: [{
-//         reviewerName: string,
-//         reviewerScore: number,
-//         reviewerComment: string
-//     }],
-//     streamServices: [{
-//         streamSvcID: number,
-//         streamSvcName: string
-//     }]
-// }
+getMovieObject(getParams()).then(Movie => {
+    for (let key in Movie) {
+        console.log(key + ": ", Movie[key]);
+    }
+});
