@@ -1,7 +1,7 @@
 const IMDB_apiKey = ["k_y4wdrion", "k_ie3pfgw9", "k_o18qbud0", "k_tfp7sn7o", "k_51hudf0k", "k_zz238cmu"];
 const TMBD_apiKey = "30584b857c462403f3b7916157ab32b7";
 const WATCHMODE_apiKey = "lnAhE3QwqgGUHY6EJyquVyNpJB5zelnG4Fc8RRIH";
-let API_index = 4;
+let API_index = 0;
 const numberOfCast = 3; // number of main cast to be filled in mainCast array from the Movie object
 
 // Constant object to get nested object from API
@@ -36,6 +36,20 @@ async function getMovieObject(movieId) {
     // Get json data from IMDB/USER RATINGS API
     const response_IMDB_USERRATINGS = await fetch(IMDB_requestUrl_UserRatings);
     const json_IMDB_USERRATINGS = await response_IMDB_USERRATINGS.json();
+
+    // REVIEWS API url from IMDB
+    const REVIEWS_requestUrl_Reviews = `https://imdb-api.com/en/API/Reviews/${IMDB_apiKey[API_index]}/${movieId}`
+    // Get json data from IMDB/REVIEWS API 
+    const response_IMDB_REVIEWS = await fetch(REVIEWS_requestUrl_Reviews);
+    const json_IMDB_REVIEWS = await response_IMDB_REVIEWS.json();
+
+    // if rating > 7, good review, get first 2 results
+    
+    // if rating < 5, bad review, get first 2 results
+
+    for (let key in json_IMDB_REVIEWS) {
+        console.log(key + ": ", json_IMDB_REVIEWS[key]);
+    }
 
     // SOURCES API url from WATCHMODE
     const WATCHMODE_requestUrl_Sources = `https://api.watchmode.com/v1/title/345534/sources/?apiKey=${WATCHMODE_apiKey}`;
@@ -72,6 +86,7 @@ async function getMovieObject(movieId) {
 async function getMainCast(actorList) {
     let mainCastArr = [];
     let mainCastObj = {};
+    let latestMoviesSorted = [];
     for (i = 0; i < numberOfCast; i++) {
         const imdbCastID = actorList[i].id;
         const TMDB_requestUrl_Find = `https://api.themoviedb.org/3/find/${imdbCastID}?api_key=${TMBD_apiKey}&language=en-US&external_source=imdb_id`
@@ -94,12 +109,21 @@ async function getMainCast(actorList) {
         //     console.log(key + ": ", json_TMDB_PERSON_MovCredits[key]);
         // }
 
-        // TODO: FIX SORTING ARRAY BY DATE
-        // let releaseDateArr = JSON.stringify(json_TMDB_PERSON_MovCredits.cast);
-        // let latestMoviesSorted = []
-        // latestMoviesSorted = latestMoviesSorted.sort((a,b) => new Date(b.release_date) - new Date(a.release_date));
-        // console.log("the release date: " + latestMoviesSorted);
+        let releaseDateArr = json_TMDB_PERSON_MovCredits.cast;
+
+        for (i = 0; i < releaseDateArr.length; i++) {
+            let obj = {};
+            obj.title = releaseDateArr[i].title;
+            obj.release_date = releaseDateArr[i].release_date;
+            latestMoviesSorted.push(obj);
+        }
+        latestMoviesSorted = latestMoviesSorted.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+        latestMoviesSorted = latestMoviesSorted.slice(0, 3);
+        for (i = 0; i < latestMoviesSorted.length; i++) {
+            delete latestMoviesSorted[i].release_date;
+        }
     }
+    mainCastArr.latestMovies = latestMoviesSorted;
     return mainCastArr;
 }
 
@@ -117,9 +141,9 @@ async function getStreamServices(sources) {
     return streamServicesArr;
 }
 
-
 getMovieObject(getParams())
 .then(Movie => {
+    console.log(Movie);
     // Call render function
     renderMovies(Movie);
 });
