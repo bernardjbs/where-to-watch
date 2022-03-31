@@ -1,1 +1,153 @@
 /* Used for review.html */
+
+
+/* Variables */
+:root {
+
+    /* colors */
+    --dark-orange: hsl(6.39, 73.16%, 54.71%);
+    --deep-red: rgb(255,0,0);
+    --light-orange: rgb(245, 140, 128);
+    --light-pink: #FAD1D1(235, 88, 88, 0);
+    --white: #fff;
+    --black: #000;
+
+}
+/* Display */
+/* Flex items */
+header, .main, .content-wrapper, .form-control, .checkbox_group {
+    display: flex;
+}
+/* Flex Row */
+header, .main, .content-wrapper, .checkbox_group {
+    flex-direction: row;
+}
+body {
+    height: 100vh;
+}
+
+header {
+    justify-content: space-around;
+    background-color: var(--dark-orange);
+    color: white;
+    height: 200px;
+}
+
+header h1 {
+    margin-top: 50px;
+}
+main {
+    width: 100%;
+    padding: 10px; 
+    margin-left: 20px;
+}
+.box-style
+{
+    border: 3px solid var(--dark-orange);
+    border-radius: 5px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    
+}
+.sub-title
+{
+    font-weight: bold;
+  margin-bottom: 5px;
+  padding: 10px;
+   
+}
+.review
+{
+    margin-left: 10px;
+    margin-bottom: 5px;
+}
+#movie-title
+{
+    font-size: 3rem;
+    font-weight: bolder;
+    color:  var(--dark-orange);
+    font-variant-caps:all-petite-caps;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    padding: 10px;
+}
+h4
+{
+    margin-bottom: 10px;
+}
+#whereToStream
+{
+    text-align: center;
+}
+.main-review
+{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
+.movie-img
+{
+  height: 200px;
+  margin-right: 20px;
+  text-align: center;
+  margin-left: 10px;
+}
+
+#whereToStream h5{
+    background-color: var(--dark-orange);
+    color: var(--white);
+    margin-bottom: 3px;
+    padding: 10px;
+    border-radius: 3px;
+}
+#imdb-section
+{
+    width: 80%;
+}
+#streaming-section
+{
+    width: 20%;
+}
+.desc-date
+{
+    margin-bottom: 5px;
+    padding: 10px;
+}
+.box-title
+{
+    background-color: var(--dark-orange);
+    color: var(--white);
+    border-radius: 2px;
+    width: 100%;
+    font-weight: bold;
+    text-align: center;
+    padding: 10px;
+}
+.container
+{
+    padding: 10px;
+}
+.row {
+    padding: 10px;
+    color: var(--white);
+    font-weight: bold;
+    background-color: var(--dark-orange);
+    border: 3px solid var(--white);
+    border-radius: 3px;
+    cursor: pointer;
+}
+.row icon {
+    float: right;
+}
+.panel {
+    padding: 10px;
+    display: none;
+}
+.checked {
+    color: orange;
+  }
+  .imgcontainer
+  {
+      display: flex;
+      margin-bottom: 10px;
+  }

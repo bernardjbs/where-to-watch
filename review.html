@@ -8,87 +8,115 @@
     <!-- CSS -->
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/review.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
     <title>Movie Review Compare</title>
 </head>
 <body>
+    <header>
+    
+        <img src="./assets/media/images/img_4.jpg">
+    
+    </header>
     <main>
-        <section id="page-title">
-            <!-- Site Title -->
-            <h1>Movie Comparison</h1>
+        
+        <section class="box-style">
+            <!-- Movie Title -->
+            <h2 id="movie-title"> Movie : Batman</h2>
+            <!-- Movie Description & Date -->
+           <div class="sub-title">Description : </div> <p class="desc-date">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat, optio consequuntur facere tenetur consectetur, cupiditate, tempora illo ut animi eligendi commodi omnis incidunt quod similique aperiam ipsa illum modi.</p>
+           <div class="sub-title">Release Date : </div> <p class="desc-date">5/4/2020</p>
         </section>
-
         <!-- Main Content Wrapper -->
         <div class="content-wrapper">
 
-            <section id="movie-title">
-                <!-- Movie Title -->
-                <h2 id="movie-title"></h2>
-                <!-- Movie Description & Date -->
-                <p id="desc-date"></p>
-            </section>
+          
 
             <!-- IMDB Section -->
-            <section id="imdb-section">
-                <div class="container">
+            <section class="box-style" id="imdb-section">
+               
 
-                    <h3>IMDB</h3>
+                    <div class="box-title"><h3>IMDB</h3></div>
+                    <div class="container">
                     <!-- Inner Container -->
                     <section class="review-container">
                         <!-- Movie poster -->
-                        <img src="./assets/media/images/imdb_placeholder.jpg" alt="movie-title">
-                        <h4>Rating: <span id="imdb_rating">XXX 00</span></h4>
-                        <h4>Audience review of film: <span id="imdb_audience_review">14,000</span></h4>
+                        <div class="imgcontainer">
+                            <img src="https://imdb-api.com/images/original/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_Ratio0.6837_AL_.jpg" class="movie-img"  alt="movie-title">
+                           <div><div class="sub-title">Rating : <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star checked"></span>
+                                <span class="fa fa-star"></span>
+                                <span class="fa fa-star"></span>  </div>
+                          
+                                <div class="sub-title"> Audience review of film : <span id="imdb_audience_review"> 14,000</span></div> 
+                           </div>
 
-                        <section>
-                            <article id="imdb_good-reviews">
-                                <h4>Good Reviews</h4>
+                        </div>
+                       
+                           
+                            <div class="row" data-mode="down"> Review<icon class="fa fa-angle-down"></icon></div>
+                            <div class="panel"> <section class="main-review">
+                            <article id="imdb_good-reviews" class="box-style">
+                                <div class="sub-title"> <h4>Good Reviews</h4></div>
                                 <!-- Good Reviews -->
-                                <article id="imdb_good-review_one">
+                                <article class="review" id="imdb_good-review_one">
                                     <p>Thumbs up</p>
                                     <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque amet, nesciunt nam exercitationem blanditiis fugiat.</q>
                                 </article>
-                                <article id="imdb_good-review_two">
+                                <article class="review" id="imdb_good-review_two">
                                     <p>Thumbs down</p>
                                     <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem est dolorum nam quis consequatur adipisci.</q>
                                 </article>
                             </article>
     
-                            <article id="imdb_bad-reviews">
-                                <h4>Bad Reviews</h4>
+                            <article id="imdb_bad-reviews" class="box-style">
+                                <div class="sub-title">  <h4>Bad Reviews</h4></div>
                                 <!-- Bad Reviews -->
-                                <article id="imdb_good-review_one">
+                                <article class="review" id="imdb_good-review_one">
                                     <p>Thumbs down</p>
                                     <q>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</q>
                                 </article>
-                                <article id="imdb_good-review_two">
+                                <article class="review" id="imdb_good-review_two">
                                     <p>Thumbs down</p>
                                     <q>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</q>
                                 </article>
                             </article>
-                        </section>
+                        </section></div>
                         
                         <section id="actors">
+
                             <h3 id="main-cast">Main Cast</h3>
+
+                            <div class="row" data-mode="down"> Main Cast<icon class="fa fa-angle-down"></icon></div>
+                            <!-- Actors name -->
+                            <div class="panel"> <p>Jennifer Aniston</p>
+                            <!-- Actors name -->
+                            <p>Edward Scissorhands</p>
+                            <!-- Actors name -->
+                            <p>Christian Bale</p></div> 
+
                         </section>
 
                         <section id="actorsLatestFilms">
-                            <h3>Latest Movies</h3>
+                            <div class="row" data-mode="down"> Latest Movies<icon class="fa fa-angle-down"></icon></div>
                             <!-- Actors name -->
-                            <p>One flew over the cuckoos nest</p>
+                           <div class="panel">    <p>One flew over the cuckoos nest</p>
                             <!-- Actors name -->
                             <p>Die Hard</p>
                             <!-- Actors name -->
-                            <p>The Grinch</p>
+                            <p>The Grinch</p></div>
                         </section>
                     </section>
                 </div>
             </section>
 
             <!-- Where to Stream -->
-            <section id="streaming-section">
+            <section class="box-style" id="streaming-section">
+                <div class="box-title"><h3>Where to Stream</h3></div>
                 <div class="container">
 
-                    <h3>Where to Stream</h3>
+                 
                     <!-- Inner Container -->
                     <section class="review-container">
                         <h4>Streaming Services:</h4>
@@ -116,5 +144,6 @@
 
     <!-- Javascript -->
     <script src="./assets/js/review.js"></script>
+    <script src="./assets/js/review_script.js"></script>
 </body>
 </html>
