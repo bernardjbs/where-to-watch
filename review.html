@@ -22,10 +22,10 @@
         
         <section class="box-style">
             <!-- Movie Title -->
-            <h2 id="movie-title"> Movie : Batman</h2>
+            <h2 id="movie-title"> Movie: <span id="the_movie_title"></span></h2>
             <!-- Movie Description & Date -->
-           <div class="sub-title">Description : </div> <p class="desc-date">Lorem ipsum dolor sit amet consectetur adipisicing elit. Neque placeat, optio consequuntur facere tenetur consectetur, cupiditate, tempora illo ut animi eligendi commodi omnis incidunt quod similique aperiam ipsa illum modi.</p>
-           <div class="sub-title">Release Date : </div> <p class="desc-date">5/4/2020</p>
+           <div class="sub-title">Description : </div> <p class="desc-disc" id="desc-disc"></p>
+           <div class="sub-title">Release Date : </div> <p class="desc-date" id="desc-date"></p>
         </section>
         <!-- Main Content Wrapper -->
         <div class="content-wrapper">
@@ -42,14 +42,13 @@
                     <section class="review-container">
                         <!-- Movie poster -->
                         <div class="imgcontainer">
-                            <img src="https://imdb-api.com/images/original/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_Ratio0.6837_AL_.jpg" class="movie-img"  alt="movie-title">
-                           <div><div class="sub-title">Rating : <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star checked"></span>
-                                <span class="fa fa-star"></span>
-                                <span class="fa fa-star"></span>  </div>
+                            <img id="title_image" src="" class="movie-img"  alt="movie-title">
+                            <div>
+                                
+                                <div id="rating_stars" class="sub-title">Rating: 
+                                </div>
                           
-                                <div class="sub-title"> Audience review of film : <span id="imdb_audience_review"> 14,000</span></div> 
+                                <div class="sub-title"> Audience review of film: <span id="imdb_audience_review"></span></div> 
                            </div>
 
                         </div>
@@ -58,54 +57,38 @@
                             <div class="row" data-mode="down"> Review<icon class="fa fa-angle-down"></icon></div>
                             <div class="panel"> <section class="main-review">
                             <article id="imdb_good-reviews" class="box-style">
-                                <div class="sub-title"> <h4>Good Reviews</h4></div>
+                                <div class="sub-title"> <h4>Positive Reviews</h4></div>
                                 <!-- Good Reviews -->
                                 <article class="review" id="imdb_good-review_one">
-                                    <p>Thumbs up</p>
-                                    <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eaque amet, nesciunt nam exercitationem blanditiis fugiat.</q>
                                 </article>
                                 <article class="review" id="imdb_good-review_two">
-                                    <p>Thumbs down</p>
-                                    <q>Lorem ipsum dolor sit amet consectetur adipisicing elit. Exercitationem est dolorum nam quis consequatur adipisci.</q>
                                 </article>
                             </article>
     
                             <article id="imdb_bad-reviews" class="box-style">
-                                <div class="sub-title">  <h4>Bad Reviews</h4></div>
+                                <div class="sub-title">  <h4>Negative Reviews</h4></div>
                                 <!-- Bad Reviews -->
-                                <article class="review" id="imdb_good-review_one">
-                                    <p>Thumbs down</p>
-                                    <q>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</q>
+                                <article class="review" id="imdb_bad-review_one">
                                 </article>
-                                <article class="review" id="imdb_good-review_two">
-                                    <p>Thumbs down</p>
-                                    <q>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Sequi voluptas, dolor delectus expedita excepturi recusandae.</q>
+                                <article class="review" id="imdb_bad-review_two">
                                 </article>
                             </article>
                         </section></div>
                         
                         <section id="actors">
-
-                            <h3 id="main-cast">Main Cast</h3>
-
                             <div class="row" data-mode="down"> Main Cast<icon class="fa fa-angle-down"></icon></div>
-                            <!-- Actors name -->
-                            <div class="panel"> <p>Jennifer Aniston</p>
-                            <!-- Actors name -->
-                            <p>Edward Scissorhands</p>
-                            <!-- Actors name -->
-                            <p>Christian Bale</p></div> 
-
+                            
+                            <div class="panel" id="actorsNames"> 
+                                <!-- Actors names -->
+                            </div> 
                         </section>
 
                         <section id="actorsLatestFilms">
                             <div class="row" data-mode="down"> Latest Movies<icon class="fa fa-angle-down"></icon></div>
-                            <!-- Actors name -->
-                           <div class="panel">    <p>One flew over the cuckoos nest</p>
-                            <!-- Actors name -->
-                            <p>Die Hard</p>
-                            <!-- Actors name -->
-                            <p>The Grinch</p></div>
+                           
+                            <div class="panel" id="latestFilms">    
+                                <!-- Movie name -->
+                            </div>
                         </section>
                     </section>
                 </div>
@@ -122,16 +105,6 @@
                         <h4>Streaming Services:</h4>
                         <section id="whereToStream">
                             <!-- Where a viewer can stream -->
-                            <h5>Netflix</h5>
-                            <h5>Hulu</h5>
-                            <h5>Microsoft Store</h5>
-                            <h5>ITunes</h5>
-                            <h5>Vudu</h5>
-                            <h5>Youtube</h5>
-                            <h5>Amazon</h5>
-                            <h5>Direct TV on Demand</h5>
-                            <h5>Spectrum on Demand</h5>
-                            <h5>HBO Max</h5>
                         </section>
                     </section>
                 </div>
@@ -143,7 +116,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Javascript -->
+    <script src="./assets/js/review_render.js"></script>
     <script src="./assets/js/review.js"></script>
-    <script src="./assets/js/review_script.js"></script>
 </body>
 </html>
