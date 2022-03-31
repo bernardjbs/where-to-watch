@@ -10,9 +10,11 @@ The site was designed to provide users with single place to gather information o
 
 # Further Implementation
 
-markup : * A panel to switch between review websites to compare how different sources to reduce perceived bias. 
-         * Access to all cast members and a panel to assort their movies based on popularity, date, and/or ratings. 
-         * A single page dynamic workflow, shifting information based on user selection criteria. 
+* A panel to switch between review websites to compare how different sources to reduce perceived bias. 
+* Access to all cast members and a panel to assort their movies based on popularity, date, and/or ratings. 
+* A single page dynamic workflow, shifting information based on user selection criteria. 
+         
+
 
 # Installation 
 
@@ -26,8 +28,11 @@ git pull
 ## Credits
 
 Developer credits;
+
 [Vinitha Gowtheepan](https://sreevinithaa.github.io/Portfolio_Vinitha_19_02_2022/Index.html) | [sreevinithaa](https://github.com/sreevinithaa)
+
 [Bernard Sin Fat](https://bernardjbs.github.io/hw-boot-wk02-professional_portfolio/) | [bernardjbs](https://github.com/bernardjbs)
+
 [Dave Plummer](https://origin-42.github.io/Dave-Plummer-Portfolio/) | [origin-42](https://github.com/origin-42)
 
 ## Extras
