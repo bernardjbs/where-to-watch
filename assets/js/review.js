@@ -117,11 +117,148 @@ async function getStreamServices(sources) {
     return streamServicesArr;
 }
 
+
 getMovieObject(getParams())
-    .then(Movie => {
-        for (let key in Movie) {
-            console.log(key + ": ", Movie[key]);
+.then(Movie => {
+    // Call render function
+    renderMovies(Movie);
+});
+
+// Selectors
+let movieTitle = $("#the_movie_title")
+let movieDescription = $("#desc-disc")
+let movieReleased = $("#desc-date")
+let moviePoster = $("#title_image")
+let numberOfStarsGiven = $("#rating_stars")
+let numberOfReviews = $("#imdb_audience_review")
+let positiveReviews = $("#imdb_good-reviews")
+let negativeReviews = $("#imdb_bad-reviews")
+let movieTopActors = $("#actorsNames")
+let actorsLatestFilms = $("#latestFilms")
+let whereToStream = $("#whereToStream")
+    
+    const renderMovies = (object) => {
+    
+        // Render Title Details
+        let title = object.movieTitle;
+        let description = object.movieDescription;
+        let releaseDate = object.movieReleaseDate;
+        let movieImage = object.movieImage;
+        addTitleDetails(title, description, releaseDate, movieImage);
+    
+        // Render review details
+        let rating = object.movieImdbRating;
+        let nOfReviews = object.movieAudienceReview;
+        let audienceGoodReviews = object.movieGoodReviews; // array of objects
+        let audienceBadReviews = object.movieBadReviews; // array of objects
+        addReviewDetails(rating, nOfReviews, audienceGoodReviews, audienceBadReviews);
+    
+        // Render cast and latest movies
+        let mainCast = object.mainCast; // array of objects
+        addCastDefailts(mainCast);
+    
+        // Render streaming services section
+        let streamingInfo = object.streamServices; // array of objects
+        addStreamingDetails(streamingInfo);
+    
+    }
+    
+    // Add Title Details
+    const addTitleDetails = (title, description, releaseDate, movieImage) => {
+    
+        movieTitle.text(title);
+        movieDescription.text(description);
+        movieReleased.text(releaseDate);
+        moviePoster.attr('src', movieImage);
+    
+    }
+    
+    // Add Review Details
+    const addReviewDetails = (rating, nOfReviews, audienceGoodReviews, audienceBadReviews) => {
+        
+        // Add stars
+        let ratingfigure;
+        if (rating > '8') {
+            ratingfigure = 5;
+        } else if (rating > '6') {
+            ratingfigure = 4;
+        } else if (rating > '4') {
+            ratingfigure = 3;
+        } else if (rating > '2') {
+            ratingfigure = 2;
+        } else {
+            ratingfigure = 1;
         }
-    });
-
-
+        
+        for (let i = 0; i < 5; i++) {
+    
+            if (ratingfigure > 0) {
+                numberOfStarsGiven.append($(`<span class="fa fa-star checked">`));
+            } else {
+                numberOfStarsGiven.append($(`<span class="fa fa-star">`));
+            }
+            
+            ratingfigure--;
+        }
+    
+        // Add number of reviews
+        numberOfReviews.text(nOfReviews);
+    
+        // Add review information
+        let reviewsArray = [audienceGoodReviews, audienceBadReviews]
+    
+        reviewsArray.forEach(review => {
+            review.forEach(subReview => {
+    
+                if (subReview.reviewerScore > 5) {
+    
+                    positiveReviews.append($(`<article class="review">`).append($(`<p>${subReview.reviewerName}: ${subReview.reviewerScore}/10</p><q>${subReview.reviewerComment}</q>`)));
+    
+                } else {
+    
+                    negativeReviews.append($(`<article class="review">`).append($(`<p>${subReview.reviewerName}: ${subReview.reviewerScore}/10</p><q>${subReview.reviewerComment}</q>`)));
+    
+                }
+            })
+        })
+    }
+    
+    // Add Cast Details
+    const addCastDefailts = (mainCast) => {
+    
+        // Render Cast Names
+        mainCast.forEach(castMember => {
+            let pTag = $(`<p id="${castMember.imdbCastID}">`);
+            pTag.text(castMember.castName);
+            movieTopActors.append(pTag);
+            let divTag = $(`<div data-hidden="true" id="${castMember.imdbCastID}_movieList"></div>`);
+    
+            castMember.latestMovies.forEach(movie => {
+    
+                divTag.append(`<p id="${movie.imdbMovieID}">${movie.movieTitle}</p>`);
+                $(`#${movie.imdbMovieID}`).on('click', function() {
+    
+                    document.location.replace(`./review.html?id=${movie.imdbMovieID}`);
+    
+                })
+            })
+    
+            actorsLatestFilms.append(divTag);
+    
+            $(`#${castMember.imdbCastID}`).on('click', function() {
+                let attr = $(`#${castMember.imdbCastID}_movieList`).attr('data-hidden');
+                attr === "false" ? 
+                $(`#${castMember.imdbCastID}_movieList`).attr('data-hidden', "true") : 
+                $(`#${castMember.imdbCastID}_movieList`).attr('data-hidden', "false");
+            })
+        })
+    }
+    
+    // Add Streaming Details
+    const addStreamingDetails = (streamingInfo) => {
+    
+        streamingInfo.forEach(streamSite => {
+            whereToStream.append($(`<h5>${streamSite.streamSvcName}</h5>`));
+        })
+    }
+    
