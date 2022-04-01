@@ -36,6 +36,22 @@ header {
 header h1 {
     margin-top: 50px;
 }
+#movie-title {
+    display: flex;
+    justify-content: space-between;
+}
+#backButton {
+    border: 3px solid var(--dark-orange);
+    padding: 0 15px; 
+    font-size: 1.5rem;
+    align-self: center;
+    border-radius: 5px;
+}
+#backButton:hover {
+    cursor: pointer;
+    background-color: var(--dark-orange);
+    color: var(--white);
+}
 main {
     width: 100%;
     padding: 10px; 
