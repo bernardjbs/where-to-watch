@@ -14,7 +14,7 @@
 </head>
 <body>
     <header>
-    
+        
         <img src="./assets/media/images/img_4.jpg">
     
     </header>
@@ -22,10 +22,10 @@
         
         <section class="box-style">
             <!-- Movie Title -->
-            <h2 id="movie-title"> Movie: <span id="the_movie_title"></span></h2>
+            <h2 id="movie-title"> Movie: <span id="the_movie_title">The Batman</span><span id="backButton">Search New Movie</span></h2>
             <!-- Movie Description & Date -->
-           <div class="sub-title">Description : </div> <p class="desc-disc" id="desc-disc"></p>
-           <div class="sub-title">Release Date : </div> <p class="desc-date" id="desc-date"></p>
+           <div class="sub-title">Title Description: </div> <p class="desc-disc" id="desc-disc"></p>
+           <div class="sub-title">Film Debut: </div> <p class="desc-date" id="desc-date"></p>
         </section>
         <!-- Main Content Wrapper -->
         <div class="content-wrapper">
@@ -36,7 +36,7 @@
             <section class="box-style" id="imdb-section">
                
 
-                    <div class="box-title"><h3>IMDB</h3></div>
+                    <div class="box-title"><h3>IMDB Extrapolation</h3></div>
                     <div class="container">
                     <!-- Inner Container -->
                     <section class="review-container">
@@ -45,16 +45,16 @@
                             <img id="title_image" src="" class="movie-img"  alt="movie-title">
                             <div>
                                 
-                                <div id="rating_stars" class="sub-title">Rating: 
+                                <div id="rating_stars" class="sub-title">Average Viewer Rating: 
                                 </div>
                           
-                                <div class="sub-title"> Audience review of film: <span id="imdb_audience_review"></span></div> 
+                                <div class="sub-title"> Number of Reviews: <span id="imdb_audience_review"></span></div> 
                            </div>
 
                         </div>
                        
                            
-                            <div class="row" data-mode="down"> Review<icon class="fa fa-angle-down"></icon></div>
+                            <div class="row" data-mode="down">IMDB Viewer Reviews<icon class="fa fa-angle-down"></icon></div>
                             <div class="panel"> <section class="main-review">
                             <article id="imdb_good-reviews" class="box-style">
                                 <div class="sub-title"> <h4>Positive Reviews</h4></div>
@@ -76,7 +76,7 @@
                         </section></div>
                         
                         <section id="actors">
-                            <div class="row" data-mode="down"> Main Cast<icon class="fa fa-angle-down"></icon></div>
+                            <div class="row" data-mode="down">Main Cast<icon class="fa fa-angle-down"></icon></div>
                             
                             <div class="panel" id="actorsNames"> 
                                 <!-- Actors names -->
@@ -84,7 +84,7 @@
                         </section>
 
                         <section id="actorsLatestFilms">
-                            <div class="row" data-mode="down"> Latest Movies<icon class="fa fa-angle-down"></icon></div>
+                            <div class="row" data-mode="down">Latest Movies<icon class="fa fa-angle-down"></icon></div>
                            
                             <div class="panel" id="latestFilms">    
                                 <!-- Movie name -->
@@ -96,13 +96,12 @@
 
             <!-- Where to Stream -->
             <section class="box-style" id="streaming-section">
-                <div class="box-title"><h3>Where to Stream</h3></div>
+                <div class="box-title"><h3>How to Watch</h3></div>
                 <div class="container">
 
                  
                     <!-- Inner Container -->
                     <section class="review-container">
-                        <h4>Streaming Services:</h4>
                         <section id="whereToStream">
                             <!-- Where a viewer can stream -->
                         </section>
@@ -116,7 +115,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
     <!-- Javascript -->
-    <script src="./assets/js/review_render.js"></script>
-    <script src="./assets/js/review.js"></script>
+    <script src="./assets/js/review_script.js"></script>
+    <!-- <script src="./assets/js/review.js"></script> -->
 </body>
 </html>

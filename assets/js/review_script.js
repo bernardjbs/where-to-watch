@@ -18,3 +18,9 @@ function slideclick(event) {
     }
   }
   $(".row").on("click", slideclick);
+
+  // Back Button
+$("#backButton").on('click', function() {
+  console.log("working")
+  document.location.replace(`./index.html`);
+})
