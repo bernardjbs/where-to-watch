@@ -7,7 +7,7 @@ var chkG = $("#chkG");
 var chkPG_13 = $("#chkPG_13");
 var chkR = $("#chkR");
 var chkNC_17 = $("#chkNC_17");
-const APIKEY = "k_64llei24";
+const APIKEY = "k_5lfzx2a4";
 var formEl = $("#form-input");
 var loader = $("#loading");
 
@@ -108,20 +108,28 @@ function LoadTable(data) {
 
 //Add search result to the div
 function LoadGridMovieDetails(data) {
-  if (data.length > 0) {
+  let filmData = data;
+  let newData = [];
+  // Check if Feature Length Film
+  for (let e = 0; e < filmData.length; e++) {
+    if (filmData[e].runtimeStr && filmData[e].runtimeStr.replace(" min", "") > 80) {
+      newData.push(filmData[e]);
+    }
+  }
+  if (newData.length > 0) {
     var resultDiv = $(".table_result");
-    var maxlength = data.length > 30 ? 30 : data.length;
+    var maxlength = newData.length > 30 ? 30 : data.length;
 
     for (var i = 0; i < maxlength; i++) {
       var rowdiv = $("<div>")
         .addClass("row")
         .attr("data-mode", "down")
-        .text(data[i].title);
+        .text(newData[i].title);
 
       var icon = $("<icon>").addClass("fa fa-angle-down");
       var toggdiv = $("<div>").addClass("panel");
 
-      toggdiv.append(LoadTable(data[i]));
+      toggdiv.append(LoadTable(newData[i]));
 
       rowdiv.append(icon);
       rowdiv.append(toggdiv);
