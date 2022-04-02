@@ -61,14 +61,20 @@ const fetchAllData = () => {
         moviePoster.attr("alt", `Poster from ${imdbTitleData.fullTitle} Debut`);
       }
       // Format number of reviews to be more readable
-      let reviewsFormat = function() {
-        if (imdbTitleData.imDbRatingVotes < 1000000) {
-          return imdbTitleData.imDbRatingVotes.slice(0, 3) + ", " + imdbTitleData.imDbRatingVotes.slice(3);
+      let reviewsFormat = function(num) {
+        if (num >= 1000000) {
+          return `${num.slice(0,1)}, ${num.slice(1,4)}, ${num.slice(4)}`;
+        } else if (num >= 100000) {
+          return `${num.slice(0,3)}, ${num.slice(3)}`;
+        } else if (num >= 10000) {
+          return `${num.slice(0,2)}, ${num.slice(2)}`;
+        } else if (num >= 1000) {
+          return `${num.slice(0,1)}, ${num.slice(1)}`;
         } else {
-          return imdbTitleData.imDbRatingVotes.slice(0, 1) + ", " + imdbTitleData.imDbRatingVotes.slice(1, 4) + ", " + imdbTitleData.imDbRatingVotes.slice(4);
+          return num;
         }
       }
-      numberOfReviews.text(reviewsFormat());
+      numberOfReviews.text(reviewsFormat(imdbTitleData.imDbRatingVotes));
 
       // Add Stars representing the rating average
       let ratingfigure;
