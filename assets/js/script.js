@@ -7,7 +7,7 @@ var chkG = $("#chkG");
 var chkPG_13 = $("#chkPG_13");
 var chkR = $("#chkR");
 var chkNC_17 = $("#chkNC_17");
-const APIKEY = "k_fbuwj772";
+const APIKEY = "k_y4wdrion";
 var formEl = $("#form-input");
 var loader = $("#loading");
 

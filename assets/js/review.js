@@ -14,7 +14,7 @@ let whereToStream = $("#whereToStream");
 
 // IMDB API
 let IMDBurl = "https://imdb-api.com/en/API/";
-let IMDBapiKey = "k_fbuwj772";
+let IMDBapiKey = "k_y4wdrion";
 // The Mobie DB API
 let DBurl = "https://api.themoviedb.org/3/";
 let DBapiKey = "4d8c1c5a92c9bffb2c1e6f66056e0a6c";
@@ -276,6 +276,23 @@ const fetchAllData = () => {
           return response.json();
         })
         .then(function (streamData) {
+          
+            const d = new Date();
+            const releasedate = new Date(imdbTitleData.releaseDate);
+            let year = d.getFullYear();
+         
+            
+            if(streamData.length==0&&releasedate.getFullYear()==year)
+            {
+                whereToStream.append(
+                    $(
+                      `<h5>On Theaters </h5>`
+                    )
+                  );
+            }
+            else{
+
+           
           let streamServices = [];
           let IDvariable = 1567;
          
@@ -318,7 +335,9 @@ const fetchAllData = () => {
             $(`#${IDvariable}${streamSite.streamSvcID}`).text(sentence);
             IDvariable++;
           });
+        }
         });
+    
     });
 };
 
