@@ -26,57 +26,24 @@ let WMapiKey = "hN3l6ItA8skv6C4SKbRIC0QiLEl7NgjjSfAG5ch9";
 let urlSearch = new URL(window.location.href);
 let movieID = urlSearch.searchParams.get("id");
 
-// CONSTRUCT OBJECT FROM API
-let passedMovieObject = {
-  movieTitle: "Batman",
-  movieDescription: "A guy dresses in a suit and callls himself The Batman",
-  movieReleaseDate: "02/03/2020",
-  movieImage:
-    "https://m.media-amazon.com/images/M/MV5BMTcyNTEyOTY0M15BMl5BanBnXkFtZTgwOTAyNzU3MDI@._V1_Ratio0.6837_AL_.jpg",
-  movieImdbRating: 7,
-  movieAudienceReview: 140032,
-  movieGoodReviews: [
-    {
-      reviewerName: "higgypuff",
-      reviewerScore: 10,
-      reviewerComment:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi, consequatur. Voluptates nihil est aliquam dolor. Commodi sapiente nobis fugiat officia provident magni. Eveniet expedita doloremque voluptatum veniam repellat consectetur illum.",
-    },
-    {
-      reviewerName: "dumblowe",
-      reviewerScore: 9,
-      reviewerComment:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi, consequatur. Voluptates nihil est aliquam dolor. Commodi sapiente nobis fugiat officia provident magni. Eveniet expedita doloremque voluptatum veniam repellat consectetur illum.",
-    },
-  ],
-  movieBadReviews: [
-    {
-      reviewerName: "someguy",
-      reviewerScore: 4,
-      reviewerComment:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi, consequatur. Voluptates nihil est aliquam dolor. Commodi sapiente nobis fugiat officia provident magni. Eveniet expedita doloremque voluptatum veniam repellat consectetur illum.",
-    },
-    {
-      reviewerName: "reviewpinini",
-      reviewerScore: 2,
-      reviewerComment:
-        "Lorem ipsum, dolor sit amet consectetur adipisicing elit. Commodi, consequatur. Voluptates nihil est aliquam dolor. Commodi sapiente nobis fugiat officia provident magni. Eveniet expedita doloremque voluptatum veniam repellat consectetur illum.",
-    },
-  ],
-  mainCast: [],
-  streamServices: [
-    {
-      streamSvcID: "87658dww",
-      streamSvcName: "HBO Now",
-      streamMethod: ["sub", "buy"],
-    },
-    {
-      streamSvcID: "821458dww",
-      streamSvcName: "Netflix",
-      streamMethod: ["rent", "buy"],
-    },
-  ],
-};
+
+function LatestMovieReload(event)
+{
+    var id=$(event.target).attr("id");
+   
+    fetch(
+        `${DBurl}movie/${id}/external_ids?api_key=${DBapiKey}`
+      )
+        .then(function (response) {
+          return response.json();
+        })
+        .then(function (data) {
+            document.location.replace(`./review.html?id=${data.imdb_id}`);
+        });
+   
+    
+    
+}
 
 const fetchAllData = () => {
   // Make IMDB Title Search "https://imdb-api.com/en/API/Title/k_e02kkg7y/tt1375666"
@@ -237,12 +204,15 @@ const fetchAllData = () => {
                     .attr("id", object.titleID)
                     .text(`${object.title}: ${object.character}`);
                   // Render each of the three latest movies and the played character
+                 
                   divTag.append(ptag);
                 });
 
+                //ptag.on("click",LatestMovieReload(object.titleID));
                 // Add three latest movies into one div for this actor
                 actorsLatestFilms.append(divTag);
-             
+                $(`.sliderow p`).on(
+                    "click",LatestMovieReload);
                 pTag.append(divTag);
                 // Add listener to each actor to hide and show relevant movies
                 $(`#${actorData.person_results[0].id}`).on(
