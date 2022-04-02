@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -9,84 +10,100 @@
     <link rel="stylesheet" href="./assets/css/reset.css">
     <link rel="stylesheet" href="./assets/css/review.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
-    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
-    <title>Movie Review Compare</title>
+        integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+    <title>WhereToWatch</title>
 </head>
+
 <body>
     <header>
-        
+
         <img src="./assets/media/images/img_4.jpg">
-    
+
     </header>
     <main>
-        
+
         <section class="box-style">
             <!-- Movie Title -->
-            <h2 id="movie-title"> Movie: <span id="the_movie_title">The Batman</span><span id="backButton">Search New Movie</span></h2>
+            <h2 id="movie-title"> Movie: <span id="the_movie_title">The Batman</span><span id="backButton">Search New
+                    Movie</span></h2>
             <!-- Movie Description & Date -->
-           <div class="sub-title">Title Description: </div> <p class="desc-disc" id="desc-disc"></p>
-           <div class="sub-title">Film Debut: </div> <p class="desc-date" id="desc-date"></p>
+            <div class="sub-title">Title Description: </div>
+            <p class="desc-date" id="desc-disc"></p>
+            <div class="sub-title">Film Debut: </div>
+            <p class="desc-date" id="desc-date"></p>
         </section>
         <!-- Main Content Wrapper -->
         <div class="content-wrapper">
 
-          
+
 
             <!-- IMDB Section -->
             <section class="box-style" id="imdb-section">
-               
 
-                    <div class="box-title"><h3>IMDB Extrapolation</h3></div>
-                    <div class="container">
+
+                <div class="box-title">
+                    <h3>IMDB Extrapolation</h3>
+                </div>
+                <div class="container">
                     <!-- Inner Container -->
                     <section class="review-container">
                         <!-- Movie poster -->
                         <div class="imgcontainer">
-                            <img id="title_image" src="" class="movie-img"  alt="movie-title">
+                            <img id="title_image" src="" class="movie-img" alt="movie-title">
                             <div>
-                                
-                                <div id="rating_stars" class="sub-title">Average Viewer Rating: 
+
+                                <div id="rating_stars" class="sub-title">Average Viewer Rating:
                                 </div>
-                          
-                                <div class="sub-title"> Number of Reviews: <span id="imdb_audience_review"></span></div> 
-                           </div>
+
+                                <div class="sub-title"> Number of Reviews: <span id="imdb_audience_review"></span></div>
+                            </div>
 
                         </div>
-                       
-                           
-                            <div class="row" data-mode="down">IMDB Viewer Reviews<icon class="fa fa-angle-down"></icon></div>
-                            <div class="panel"> <section class="main-review">
-                            <article id="imdb_good-reviews" class="box-style">
-                                <div class="sub-title"> <h4>Most Positive</h4></div>
-                                <!-- Good Reviews -->
-                                <article class="review" id="imdb_good-review_one">
+
+
+                        <div class="row" data-mode="down">IMDB Viewer Reviews<icon class="fa fa-angle-down"></icon>
+                        </div>
+                        <div class="panel">
+                            <section class="main-review">
+                                <article id="imdb_good-reviews" class="box-style">
+                                    <div class="sub-title">
+                                        <h4>Most Positive</h4>
+                                    </div>
+                                    <!-- Good Reviews -->
+                                    <article class="review" id="imdb_good-review_one">
+                                    </article>
+                                    <article class="review" id="imdb_good-review_two">
+                                    </article>
                                 </article>
-                                <article class="review" id="imdb_good-review_two">
+
+                                <article id="imdb_bad-reviews" class="box-style">
+                                    <div class="sub-title">
+                                        <h4>Most Negative</h4>
+                                    </div>
+                                    <!-- Bad Reviews -->
+                                    <article class="review" id="imdb_bad-review_one">
+                                    </article>
+                                    <article class="review" id="imdb_bad-review_two">
+                                    </article>
                                 </article>
-                            </article>
-    
-                            <article id="imdb_bad-reviews" class="box-style">
-                                <div class="sub-title">  <h4>Most Negative</h4></div>
-                                <!-- Bad Reviews -->
-                                <article class="review" id="imdb_bad-review_one">
-                                </article>
-                                <article class="review" id="imdb_bad-review_two">
-                                </article>
-                            </article>
-                        </section></div>
-                        
+                            </section>
+                        </div>
+
                         <section id="actors">
-                            <div class="row" data-mode="down">Main Cast<icon class="fa fa-angle-down"></icon></div>
-                            
-                            <div class="panel" id="actorsNames"> 
+                            <div class="row" data-mode="down">Main Cast<icon class="fa fa-angle-down"></icon>
+                            </div>
+
+                            <div class="panel" id="actorsNames">
                                 <!-- Actors names -->
-                            </div> 
+                            </div>
                         </section>
 
                         <section id="actorsLatestFilms">
-                            <div class="row" data-mode="down">Latest Movies: Character Played<icon class="fa fa-angle-down"></icon></div>
-                           
-                            <div class="panel filmpanel"  id="latestFilms">    
+                            <!-- <div class="row" id="latestfilmactor" data-mode="down">Latest Movies: Character Played<icon
+                                    class="fa fa-angle-down"></icon>
+                            </div> -->
+
+                            <div class="panel filmpanel" id="latestFilms">
                                 <!-- Movie name -->
                             </div>
                         </section>
@@ -96,10 +113,12 @@
 
             <!-- Where to Stream -->
             <section class="box-style" id="streaming-section">
-                <div class="box-title"><h3>How to Watch</h3></div>
+                <div class="box-title">
+                    <h3>How to Watch</h3>
+                </div>
                 <div class="container">
 
-                 
+
                     <!-- Inner Container -->
                     <section class="review-container">
                         <section id="whereToStream">
@@ -110,7 +129,7 @@
             </section>
         </div>
     </main>
-    
+
     <!-- JQuery -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 
@@ -118,4 +137,5 @@
     <script src="./assets/js/review_script.js"></script>
     <script src="./assets/js/review.js"></script>
 </body>
+
 </html>
