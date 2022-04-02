@@ -14,7 +14,7 @@ let whereToStream = $("#whereToStream");
 
 // IMDB API
 let IMDBurl = "https://imdb-api.com/en/API/";
-let IMDBapiKey = "k_y4wdrion";
+let IMDBapiKey = "k_28w9m3nq";
 // The Mobie DB API
 let DBurl = "https://api.themoviedb.org/3/";
 let DBapiKey = "4d8c1c5a92c9bffb2c1e6f66056e0a6c";
@@ -26,7 +26,7 @@ let WMapiKey = "hN3l6ItA8skv6C4SKbRIC0QiLEl7NgjjSfAG5ch9";
 let urlSearch = new URL(window.location.href);
 let movieID = urlSearch.searchParams.get("id");
 
-
+// Reload page with designed latest movie by actor on click
 function LatestMovieReload(event)
 {
     var id=$(event.target).attr("id");
@@ -40,9 +40,6 @@ function LatestMovieReload(event)
         .then(function (data) {
             document.location.replace(`./review.html?id=${data.imdb_id}`);
         });
-   
-    
-    
 }
 
 const fetchAllData = () => {
@@ -52,14 +49,28 @@ const fetchAllData = () => {
       return response.json();
     })
     .then(function (imdbTitleData) {
-      // Render
+
+      // Render direct variables from IMDB
       movieTitle.text(imdbTitleData.fullTitle);
       movieDescription.text(imdbTitleData.plot);
       movieReleased.text(imdbTitleData.releaseDate);
-      moviePoster.attr("src", imdbTitleData.image);
-      numberOfReviews.text(imdbTitleData.imDbRatingVotes);
+      if (!imdbTitleData.image) {
+        moviePoster.attr("alt", "Movie Poster can't load");
+      } else {
+        moviePoster.attr("src", imdbTitleData.image);
+        moviePoster.attr("alt", `Poster from ${imdbTitleData.fullTitle} Debut`);
+      }
+      // Format number of reviews to be more readable
+      let reviewsFormat = function() {
+        if (imdbTitleData.imDbRatingVotes < 1000000) {
+          return imdbTitleData.imDbRatingVotes.slice(0, 3) + ", " + imdbTitleData.imDbRatingVotes.slice(3);
+        } else {
+          return imdbTitleData.imDbRatingVotes.slice(0, 1) + ", " + imdbTitleData.imDbRatingVotes.slice(1, 4) + ", " + imdbTitleData.imDbRatingVotes.slice(4);
+        }
+      }
+      numberOfReviews.text(reviewsFormat());
 
-      // Add Stars
+      // Add Stars representing the rating average
       let ratingfigure;
       if (imdbTitleData.imDbRating > "8") {
         ratingfigure = 5;
@@ -82,18 +93,15 @@ const fetchAllData = () => {
         ratingfigure--;
       }
 
-      // Fetch reviews https://imdb-api.com/en/API/Reviews/k_e02kkg7y/tt1375666
+      // Fetch reviews information from IMDB https://imdb-api.com/en/API/Reviews/k_e02kkg7y/tt1375666
       fetch(`${IMDBurl}Reviews/${IMDBapiKey}/${movieID}`)
         .then(function (response) {
           return response.json();
         })
         .then(function (reviewInfo) {
-          let movieGoodReviews = [];
-          let pos = 2;
-          let movieBadReviews = [];
-          let neg = 2;
           let reviewsPassed = reviewInfo.items;
        
+          // Sort review information based on how users rated the film
           reviewsPassed.sort(function (a, b) {
             if (isNaN(a.rate) || isNaN(b.rate)) {
               return a.rate > b.rate ? 1 : -1;
@@ -112,6 +120,7 @@ const fetchAllData = () => {
               ? result.slice(result.length - 3, result.length - 1)
               : badreview;
 
+          // Render reviews for negative and positive
           badreview.forEach((review) => {
             negativeReviews.append(
               $(`<article class="review">`).append(
@@ -139,6 +148,7 @@ const fetchAllData = () => {
         imdbTitleData.actorList[2].id,
       ];
       passedCast.forEach((actor) => {
+
         // Fetch each actor from The Movie Database
         fetch(
           `${DBurl}find/${actor}?api_key=${DBapiKey}&language=en-US&external_source=imdb_id`
@@ -166,6 +176,7 @@ const fetchAllData = () => {
                 return response.json();
               })
               .then(function (movieCreds) {
+
                 // Fetch latest three movies
                 let passedArray = movieCreds.cast;
 
@@ -203,12 +214,11 @@ const fetchAllData = () => {
                   var ptag = $("<p>")
                     .attr("id", object.titleID)
                     .text(`${object.title}: ${object.character}`);
+
                   // Render each of the three latest movies and the played character
-                 
                   divTag.append(ptag);
                 });
 
-                //ptag.on("click",LatestMovieReload(object.titleID));
                 // Add three latest movies into one div for this actor
                 actorsLatestFilms.append(divTag);
                 $(`.sliderow p`).on(
@@ -251,7 +261,7 @@ const fetchAllData = () => {
             const releasedate = new Date(imdbTitleData.releaseDate);
             let year = d.getFullYear();
          
-            
+            // If no sites sell the movie, suggest movie pending release from cinemas
             if(streamData.length==0&&releasedate.getFullYear()==year)
             {
                 whereToStream.append(
@@ -271,6 +281,7 @@ const fetchAllData = () => {
 
             if (!streamServices.some((e) => e.streamSvcName === element.name)) {
               /* vendors contains the element we're looking for */
+              // Construct object from data variables
               obj.streamSvcID = element.source_id;
               obj.streamSvcName = element.name;
               obj.method = [element.type];
@@ -284,6 +295,7 @@ const fetchAllData = () => {
             }
           });
 
+          // render where to stream to page and how
           streamServices.forEach((streamSite) => {
             whereToStream.append(
               $(
@@ -311,4 +323,5 @@ const fetchAllData = () => {
     });
 };
 
+// Initialise fetch on load
 fetchAllData();

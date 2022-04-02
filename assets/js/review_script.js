@@ -1,3 +1,4 @@
+// Smooth transition when clicking an interactive object.
 function slideclick(event) {
   var rowe = $(event.target);
   var data_mode = rowe.attr("data-mode");
