@@ -182,6 +182,9 @@ h4 {
   display: none;
  
 }
+.sliderow p:hover {
+  color: var(--dark-orange);
+}
 .filmpanel {
   display: flex;
   justify-content: space-between;
