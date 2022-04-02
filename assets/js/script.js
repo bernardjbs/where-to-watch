@@ -7,7 +7,7 @@ var chkG = $("#chkG");
 var chkPG_13 = $("#chkPG_13");
 var chkR = $("#chkR");
 var chkNC_17 = $("#chkNC_17");
-const APIKEY = "k_5lfzx2a4";
+const APIKEY = "k_y4wdrion";
 var formEl = $("#form-input");
 var loader = $("#loading");
 
@@ -118,9 +118,10 @@ function LoadGridMovieDetails(data) {
   }
   if (newData.length > 0) {
     var resultDiv = $(".table_result");
-    var maxlength = newData.length > 30 ? 30 : data.length;
+    var maxlength = newData.length > 30 ? 30 : newData.length;
 
     for (var i = 0; i < maxlength; i++) {
+    
       var rowdiv = $("<div>")
         .addClass("row")
         .attr("data-mode", "down")
