@@ -1,4 +1,4 @@
-[Title](to be added)
+![snippet](./assets/media/images/where-to-watch-title.jpg)
 
 # Summary
 
@@ -14,8 +14,6 @@ The site was designed to provide users with single place to gather information o
 * Access to all cast members and a panel to assort their movies based on popularity, date, and/or ratings. 
 * A single page dynamic workflow, shifting information based on user selection criteria. 
          
-
-
 # Installation 
 
 ```
@@ -37,7 +35,7 @@ Developer credits;
 
 ## Extras
 
-[Home Screen](https://origin-42.github.io/group-project/) - Where to Watch
+[Home Screen](https://origin-42.github.io/where-to-watch/) - WheretoWatch
 
-- Homepage Screenshot
-- Page two screenshot
+![snippet](./assets/media/images/search_page.jpg)
+![snippet](./assets/media/images/results_page.jpg)
