@@ -71,7 +71,12 @@ h2 {
 #match-results {
   text-align: left;
 }
-
+.message
+{
+ 
+  margin-top: 10px;
+  padding: 10px;
+}
 .select-group {
   border: 3px solid var(--black);
   border-radius: 5px;
@@ -79,6 +84,10 @@ h2 {
   margin-top: 5px;
   margin-bottom: 5px;
   padding: 5px;
+}
+.hide
+{
+  display: none;
 }
 
 #loading {

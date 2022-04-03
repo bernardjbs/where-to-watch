@@ -36,6 +36,9 @@ var formSubmitHandler = function (event) {
   displayLoading();
 
   var resultDiv = $(".table_result");
+  $("#match-results").removeClass("hide");
+  $("#resultheader").removeClass("hide");
+  $("#message-info").addClass("hide");
   resultDiv.text("");
   var parameter = [];
   
@@ -76,7 +79,7 @@ var formSubmitHandler = function (event) {
     // Create url based on selection criteria
     var url = `https://imdb-api.com/API/AdvancedSearch/${APIKEY}?${parameter.join( "&" )}`;
     getMovieFromURL(url);
-    console.log(parameter)
+   
   } else {
     HideLoading();
   }
@@ -94,7 +97,7 @@ function LoadTable(data) {
   row.append(col2);
   table.append(row);
   var row1 = $("<tr>");
-  console.log(data)
+  
   var col3 = $("<td>").text(`Certificate : ${data.contentRating} `);
 
   row1.append(col3);
