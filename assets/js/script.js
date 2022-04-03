@@ -4,6 +4,7 @@ var ratingto = $("#ratingto");
 var daterange = $("#date-range");
 var titlesearch = $("#title-search");
 var chkG = $("#chkG");
+var chkPg = $("#chkPG");
 var chkPG_13 = $("#chkPG_13");
 var chkR = $("#chkR");
 var chkNC_17 = $("#chkNC_17");
@@ -42,6 +43,7 @@ var formSubmitHandler = function (event) {
   if (!isEmpty(titlesearch.val())) {
     parameter.push("title=" + titlesearch.val());
   }
+  
   // Check for input on date range
   if (!isEmpty(daterange.val())) {
     parameter.push("release_date=" + daterange.val());
@@ -54,9 +56,12 @@ var formSubmitHandler = function (event) {
   // Add any certification
   if (chkG.is(":checked")) {
     certificates.push(chkG.val());
-
-  } if (chkPG_13.is(":checked")) {
-    certificates.push(chkG.val());
+    
+  } if (chkPg.is(":checked")) {
+    certificates.push(chkPg.val());
+    
+  }  if (chkPG_13.is(":checked")) {
+    certificates.push(chkPG_13.val());
 
   } if (chkR.is(":checked")) {
     certificates.push(chkR.val());
@@ -71,7 +76,7 @@ var formSubmitHandler = function (event) {
     // Create url based on selection criteria
     var url = `https://imdb-api.com/API/AdvancedSearch/${APIKEY}?${parameter.join( "&" )}`;
     getMovieFromURL(url);
-
+    console.log(parameter)
   } else {
     HideLoading();
   }
@@ -89,7 +94,7 @@ function LoadTable(data) {
   row.append(col2);
   table.append(row);
   var row1 = $("<tr>");
-
+  console.log(data)
   var col3 = $("<td>").text(`Certificate : ${data.contentRating} `);
 
   row1.append(col3);
@@ -125,7 +130,7 @@ function LoadGridMovieDetails(data) {
       var rowdiv = $("<div>")
         .addClass("row")
         .attr("data-mode", "down")
-        .text(newData[i].title);
+        .text(`${newData[i].title} ${newData[i].description.replace(" Video", "")}`);
 
       var icon = $("<icon>").addClass("fa fa-angle-down");
       var toggdiv = $("<div>").addClass("panel");

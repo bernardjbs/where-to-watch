@@ -104,6 +104,10 @@ main {
   margin-bottom: 10px;
   padding: 10px;
 }
+.review_title:hover {
+  color: var(--dark-orange);
+  cursor: pointer;
+}
 h4 {
   margin-bottom: 10px;
 }

@@ -128,19 +128,21 @@ const fetchAllData = () => {
 
           // Render reviews for negative and positive
           badreview.forEach((review) => {
+            review.content = `${review.content.slice(0, 150)}`
             negativeReviews.append(
               $(`<article class="review">`).append(
                 $(
-                  `<p><strong>Reviewer:</strong> ${review.username}, <strong>Rating</strong>: ${review.rate}/10</p><q>${review.title}</q>`
+                  `<p><strong>Reviewer:</strong> <a href="${review.userUrl}" target="_blank" class="review_title">${review.username}</a>, <strong>Rating</strong>: ${review.rate}/10</p><q><a href="${review.reviewLink}" target="_blank"><span style="font-weight: bold" class="review_title">${review.title}</span>:<br> ${review.content}<span style="cursor:pointer">...</span></a></q><br><br>`
                 )
               )
             );
           });
           goodreview.forEach((review) => {
+            review.content = `${review.content.slice(0, 150)}`
             positiveReviews.append(
               $(`<article class="review">`).append(
                 $(
-                  `<p><strong>Reviewer:</strong> ${review.username}, <strong>Rating</strong>: ${review.rate}/10</p><q>${review.title}</q>`
+                  `<p><strong>Reviewer:</strong> <a href="${review.userUrl}" target="_blank" class="review_title">${review.username}</a>, <strong>Rating</strong>: ${review.rate}/10</p><q><a href="${review.reviewLink}" target="_blank"><span style="font-weight: bold" class="review_title">${review.title}</span>:<br> ${review.content}<span style="cursor:pointer">...</span></a></q><br><br>`
                 )
               )
             );
@@ -272,7 +274,7 @@ const fetchAllData = () => {
             {
                 whereToStream.append(
                     $(
-                      `<h5>On Theaters </h5>`
+                      `<h5>In Theaters </h5>`
                     )
                   );
             }
