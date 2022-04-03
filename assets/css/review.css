@@ -46,18 +46,15 @@ header {
 }
 #actorsNames p:hover {
   cursor: pointer;
- font-weight: bold;;
+  font-weight: bold;
 }
-#imdb_good-reviews
-{
-    width: 50%;
-    padding: 5px;
-    
+#imdb_good-reviews {
+  width: 50%;
+  padding: 5px;
 }
-#imdb_bad-reviews
-{
-    width: 50%;
-    padding: 5px;
+#imdb_bad-reviews {
+  width: 50%;
+  padding: 5px;
 }
 header h1 {
   margin-top: 50px;
@@ -68,7 +65,7 @@ header h1 {
 }
 #backButton {
   border: 3px solid var(--dark-orange);
-  padding: 0 15px;
+  padding: 0 10px;
   font-size: 1.5rem;
   align-self: center;
   border-radius: 5px;
@@ -163,16 +160,14 @@ h4 {
   border-radius: 3px;
   cursor: pointer;
 }
-.sliderow
-{
-    padding: 20px;
-  
-    margin-top: 10px;
+.sliderow {
+  padding: 20px;
+
+  margin-top: 10px;
   margin-bottom: 10px;
-   
-    border: 3px solid var(--dark-orange);
-    border-radius: 3px;
-   
+
+  border: 3px solid var(--dark-orange);
+  border-radius: 3px;
 }
 .row icon {
   float: right;
@@ -180,7 +175,6 @@ h4 {
 .panel {
   padding: 10px;
   display: none;
- 
 }
 .sliderow p:hover {
   color: var(--dark-orange);
@@ -197,14 +191,25 @@ h4 {
   margin-bottom: 10px;
 }
 @media only screen and (max-width: 600px) {
-    .content-wrapper
-    {
-        flex-direction: column;
-    }
-    #imdb-section {
-        width: 100%;
-      }
-      #streaming-section {
-        width: 100%;
-      }
+  .content-wrapper {
+    flex-direction: column;
+  }
+  #imdb-section {
+    width: 100%;
+  }
+  #streaming-section {
+    width: 100%;
+  }
+  #imdb_good-reviews {
+    width: 100%;
+    padding: 5px;
+  }
+  #imdb_bad-reviews {
+    width: 100%;
+    padding: 5px;
+  }
+  .main-review
+  {
+    flex-direction: column;
+  }
 }
