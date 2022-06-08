@@ -35,7 +35,7 @@ Developer credits;
 
 ## Extras
 
-[Home Screen](https://origin-42.github.io/where-to-watch/) - WheretoWatch
+[Home Screen](https://bernardjbs.github.io/where-to-watch/) - WheretoWatch
 
 ![snippet](./assets/media/images/search_page.jpg)
 ![snippet](./assets/media/images/results_page.jpg)
